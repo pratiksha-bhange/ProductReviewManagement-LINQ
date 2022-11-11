@@ -42,6 +42,8 @@ namespace Product_Review_Management__Using_LINQ
             management.RetrieveCountOfRecords(productReviewList);
             // UC5
             management.RetrieveProductIdAndReview(productReviewList);
+            // UC6
+            management.SkipTopFiveRecords(productReviewList);
         }
     }
 }
