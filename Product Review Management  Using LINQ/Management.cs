@@ -113,9 +113,21 @@ namespace Product_Review_Management__Using_LINQ
             //lambda syntax
             var recordedData = listProductReviews.GroupBy(x => x.ProductId).Select(x => new { ProductId = x.Key, Average = x.Average(y => y.Rating) });
             Console.WriteLine("\nAverage rating of ProductId = ");
+
             foreach (var list in recordedData)
             {
                 Console.WriteLine(list.ProductId + "------" + list.Average);
+            }
+        }
+        // UC11- Records with nice review message.
+        public void RecordsWithNiceReview(List<ProductReview> listProductReview)
+        {
+            var recordData = (from productReview in listProductReview where (productReview.Review.Equals("Nice"))select productReview).ToList();
+            Console.WriteLine("\nRecords with nice review message = ");
+
+            foreach (var list in recordData)
+            {
+                Console.WriteLine("Product id = " + list.ProductId + "User id = " + list.UserId + "Rating is = " + list.Rating + " Review is = " + list.Review + " isLike = " + list.isLike);
             }
         }
 
