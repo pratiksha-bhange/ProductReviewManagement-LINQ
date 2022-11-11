@@ -107,6 +107,17 @@ namespace Product_Review_Management__Using_LINQ
                 Console.WriteLine("ProductId:-" + list.Field<string>("ProductId") + " UserId:-" + list.Field<string>("UserId") + " Ratings:-" + list.Field<string>("Rating") + " Review:-" + list.Field<string>("Review") + " IsLike:-" + list.Field<string>("isLike"));
             }
         }
+        // UC10- Finds the avrage rating.
+        public void FindAvrageRating(List<ProductReview> listProductReviews)
+        {
+            //lambda syntax
+            var recordedData = listProductReviews.GroupBy(x => x.ProductId).Select(x => new { ProductId = x.Key, Average = x.Average(y => y.Rating) });
+            Console.WriteLine("\nAverage rating of ProductId = ");
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine(list.ProductId + "------" + list.Average);
+            }
+        }
 
     }
 }

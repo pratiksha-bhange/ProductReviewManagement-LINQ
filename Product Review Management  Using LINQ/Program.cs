@@ -65,6 +65,8 @@ namespace Product_Review_Management__Using_LINQ
             }
             // UC9
             management.RetrieveRecordsWithIsLikeValueTrue(dataTable);
+            // UC10
+            management.FindAvrageRating(productReviewList);
         }
     }
 }  
