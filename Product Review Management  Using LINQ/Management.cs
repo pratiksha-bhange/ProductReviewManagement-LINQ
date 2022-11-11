@@ -8,7 +8,7 @@ namespace Product_Review_Management__Using_LINQ
 {
     class Management
     {
-        // Retrieve Top 3 records from list.--UC2--
+        // --UC2-- Retrieve Top 3 records from list.
         public readonly DataTable dataTable = new DataTable();
 
         public void TopRecords(List<ProductReview> listProductReview)
@@ -21,7 +21,7 @@ namespace Product_Review_Management__Using_LINQ
                 Console.WriteLine("ProductId:-" + list.ProductId + " UserId:-" + list.UserId + " Ratings:-" + list.Rating + " Review:-" + list.Review + " IsLike:-" + list.isLike);
             }
         }
-        // Selects the record with rating grater than 3 and with product id = 1,4,9.--UC3--
+        // --UC3-- Selects the record with rating grater than 3 and with product id = 1,4,9.
         public void selectedRecords(List<ProductReview> listProductReviews)
         {
             var recordedData = from productReviews in listProductReviews
@@ -34,7 +34,7 @@ namespace Product_Review_Management__Using_LINQ
                 Console.WriteLine("ProductId:-" + list.ProductId + " UserId:-" + list.UserId + " Ratings:-" + list.Rating + " Review:-" + list.Review + " IsLike:-" + list.isLike);
             }
         }
-        // UC4- Retrieves the count of record with  the help of group by id.
+        // --UC4-- Retrieves the count of record with  the help of group by id.
         public void RetrieveCountOfRecords(List<ProductReview> listProductReview)
         {
             var recordedData = listProductReview.GroupBy(x => x.ProductId).Select(x => new { ProductId = x.Key, Count = x.Count() });
@@ -43,6 +43,18 @@ namespace Product_Review_Management__Using_LINQ
             foreach (var list in recordedData)
             {
                 Console.WriteLine(list.ProductId + " = " + list.Count);
+            }
+        }
+        // --UC5-- Retrieves the productId and review.
+        public void RetrieveProductIdAndReview(List<ProductReview> listProductReviews)
+        {
+            //lambda syntax
+            var recordData = listProductReviews.Select(x => new { ProductId = x.ProductId, Review = x.Review });
+            Console.WriteLine("\nProduct id and review = ");
+
+            foreach (var list in recordData)
+            {
+                Console.WriteLine(list.ProductId + "------" + list.Review);
             }
         }
 

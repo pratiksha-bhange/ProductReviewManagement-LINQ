@@ -40,6 +40,8 @@ namespace Product_Review_Management__Using_LINQ
             management.selectedRecords(productReviewList);
             // UC4
             management.RetrieveCountOfRecords(productReviewList);
+            // UC5
+            management.RetrieveProductIdAndReview(productReviewList);
         }
     }
 }
