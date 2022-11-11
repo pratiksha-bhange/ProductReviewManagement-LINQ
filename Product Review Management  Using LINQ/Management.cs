@@ -8,9 +8,10 @@ namespace Product_Review_Management__Using_LINQ
 {
     class Management
     {
-        // --UC2-- Retrieve Top 3 records from list.
+      //UC1--
         public readonly DataTable dataTable = new DataTable();
 
+        // --UC2-- Retrieve Top 3 records from list.
         public void TopRecords(List<ProductReview> listProductReview)
         {
             var recordedData = (from productReviews in listProductReview orderby productReviews.Rating descending select productReviews).Take(3);
@@ -69,17 +70,29 @@ namespace Product_Review_Management__Using_LINQ
             }
         }
         // --UC7-- Retrieves the productId and review.
-       // public void RetrieveProductIdAndReviews(List<ProductReview> listProductReviews)
-        //{
-        //    //lambda syntax
-        //    var recordData = listProductReviews.Select(x => new { ProductId = x.ProductId, Review = x.Review });
-        //    Console.WriteLine("\nProduct id and review = ");
+        public void RetrieveProductIdAndReviews(List<ProductReview> listProductReviews)
+        {
+            //lambda syntax
+            var recordData = listProductReviews.Select(x => new { ProductId = x.ProductId, Review = x.Review });
+            Console.WriteLine("\nProduct id and review = ");
 
-        //    foreach (var list in recordData)
-        //    {
-        //        Console.WriteLine(list.ProductId + "------" + list.Review);
-        //    }
-        //}
+            foreach (var list in recordData)
+            {
+                Console.WriteLine(list.ProductId + "------" + list.Review);
+            }
+        }
+        // UC8- Creates the table.
+        public DataTable CreateTable(List<ProductReview> listProductReview)
+        {
+            dataTable.Columns.Add("ProductId");
+            dataTable.Columns.Add("UserId");
+            dataTable.Columns.Add("Rating");
+            dataTable.Columns.Add("Review");
+            dataTable.Columns.Add("isLike");
+            return dataTable;
+
+         
+        }
 
     }
 }
