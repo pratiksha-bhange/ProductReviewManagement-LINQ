@@ -69,17 +69,17 @@ namespace Product_Review_Management__Using_LINQ
             }
         }
         // --UC7-- Retrieves the productId and review.
-       // public void RetrieveProductIdAndReviews(List<ProductReview> listProductReviews)
-        //{
-        //    //lambda syntax
-        //    var recordData = listProductReviews.Select(x => new { ProductId = x.ProductId, Review = x.Review });
-        //    Console.WriteLine("\nProduct id and review = ");
+        public void RetrieveProductIdAndReviews(List<ProductReview> listProductReviews)
+        {
+            //lambda syntax
+            var recordData = listProductReviews.Select(x => new { ProductId = x.ProductId, Review = x.Review });
+            Console.WriteLine("\nProduct id and review = ");
 
-        //    foreach (var list in recordData)
-        //    {
-        //        Console.WriteLine(list.ProductId + "------" + list.Review);
-        //    }
-        //}
+            foreach (var list in recordData)
+            {
+                Console.WriteLine(list.ProductId + "------" + list.Review);
+            }
+        }
 
     }
 }
